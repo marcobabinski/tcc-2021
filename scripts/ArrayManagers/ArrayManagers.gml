@@ -76,11 +76,29 @@ function getNeighbors(_actualNode) {
 	
 	// Filtrar possibilidades
 	for (var i = array_length(_possibleNeighbors) - 1; i >= 0; i--) {
-		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == VOID) {
+		// Tiles indevidos
+		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == VOID
+			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == WALL
+			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == GOAL
+			or global.collisionField[_possibleNeighbors[i][0]][_possibleNeighbors[i][1]] == OBSTACLE) {
 			array_delete(_possibleNeighbors, i, 1);
 		}
+		
+		//with all {
+		//		if (object_index == objJar
+		//		or object_index == objGoal) {
+		//			if (getPosTile(self)[0] == _possibleNeighbors[i - 1][0]
+		//			and getPosTile(self)[1] == _possibleNeighbors[i][1]) {
+		//				array_delete(_possibleNeighbors, i, 1);
+		//			}
+		//		}
+		//	}
 	}
 	
+	// Jarros / Portal
+	for (var i = array_length(_possibleNeighbors) - 1; i >= 0; i--) {
+			
+	}
 	//show_message(_possibleNeighbors);
 	
 	// Retornar nós

@@ -47,6 +47,7 @@ function aiBlindSearch() {
 }
 
 function aiAStar() {
+if (instance_exists(objPlayer)) {
 	// Inicializa os arrays de nós abertos e fechados
 	var _openQueue = [];
 	var _closedQueue = [];
@@ -136,12 +137,19 @@ function aiAStar() {
             }
         }
 		
-		if (_nextStep[0] != _start[0]) {
-			x += 16 * sign(_nextStep[0] - _start[0]);
-		} else if (_nextStep[1] != _start[1]) {
-			y += 16 * sign(_nextStep[1] - _start[1]);
+		// Matar player
+		if (_nextStep[0] == getPosTile(objPlayer)[0]
+			and _nextStep[1] == getPosTile(objPlayer)[1]) {
+			instance_destroy(objPlayer);	
+		} else {
+			if (_nextStep[0] != _start[0]) {
+				x += 16 * sign(_nextStep[0] - _start[0]);
+			} else if (_nextStep[1] != _start[1]) {
+				y += 16 * sign(_nextStep[1] - _start[1]);
+			}
 		}
 	} else {
 		show_message("Sem caminho...")
 	}
+}
 }

@@ -8,6 +8,8 @@ function MACROS(){
 	#macro WALL 3
 	#macro SPIKES 4
 	#macro DOOR 5
+	#macro JAR 6
+	#macro OBSTACLE 7
 	
 	// Inimigos
 	#macro SLIME 11
