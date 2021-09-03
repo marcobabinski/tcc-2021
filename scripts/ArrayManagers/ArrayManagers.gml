@@ -18,9 +18,9 @@ function addNode(_arrayInput, _x, _y, _px, _py, _start, _dest) {
 	_array[array_length(_array)] = [
 		[_x, _y],
 		[_px, _py],
-		manhattanDistance(_x, _start[0], _y, _start[1]),
-		manhattanDistance(_x, _dest[0], _y, _dest[1]),
-		manhattanDistance(_x, _start[0], _y, _start[1]) + manhattanDistance(_x, _dest[0], _y, _dest[1])
+		manhattanDistance(_x, _y, _start[0], _start[1]),
+		manhattanDistance(_x, _y, _dest[0], _dest[1]),
+		manhattanDistance(_x, _y, _start[0], _start[1]) + manhattanDistance(_x, _y, _dest[0], _dest[1])
 	]
 	
 	return _array;
@@ -33,10 +33,69 @@ function sortNodes(_arrayInput) {
 	
 	// Menor
 	var _lowest = 0;
+	var _lowestNumber = 0;
 	
-	for (var i = 0; i < array_length(_initArray); i++) {
-		if (_initArray[i][4] < _initArray[_lowest][4]) _lowest = i;
+	while (array_length(_initArray) > 0) {
+		// show_message(string(_initArray) +"\n" +string(_sortedArray))
+		
+		// Define o menor como o primeiro
+		_lowest = 0;
+		_lowestNumber = _initArray[0][4];
+		
+		// Procura o menor valor do array inicial
+		for (var i = 0; i < array_length(_initArray); i++) {
+			//show_message("Lowest: " +string(_lowestNumber));
+			if (_initArray[i][4] < _lowestNumber) {
+				_lowest = i;
+				_lowestNumber = _initArray[i][4];
+			}
+		}
+		
+		// Passa esse valor para o novo em ordem
+		array_insert(_sortedArray, array_length(_sortedArray), _initArray[_lowest]);
+		
+		// Remove do array inicial
+		array_delete(_initArray, _lowest, 1);
 	}
 	
+	return _sortedArray;
 	
+}
+
+function getNeighbors(_actualNode) {
+	// Possíveis vizinhos
+	var _possibleNeighbors = [];
+	
+	// Listar possibilidades
+	_possibleNeighbors[0] = [_actualNode[0] + 1, _actualNode[1]]; // Direita
+	_possibleNeighbors[1] = [_actualNode[0], _actualNode[1] + 1]; // Cima
+	_possibleNeighbors[2] = [_actualNode[0] - 1, _actualNode[1]]; // Esquerda
+	_possibleNeighbors[3] = [_actualNode[0], _actualNode[1] - 1]; // Baixo
+	
+	show_message(_possibleNeighbors);
+	
+	// Filtrar possibilidades
+	for (var i = array_length(_possibleNeighbors) - 1; i > 0; i--) {
+		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == 0) {
+			array_delete(_possibleNeighbors, i, 1);
+		}
+	}
+	
+	show_message(_possibleNeighbors);
+	
+	// Retornar nós
+	return _possibleNeighbors;
+}
+
+function indexOfNode(_array, _node) {
+	var _index = -1;
+	
+	for (var i = 0; i < array_length(_array); i++) {
+		if (_array[i][0][0] == _node[0] and _array[i][0][1] == _node[1]) {
+			_index = i;
+			break
+		}
+	}
+	
+	return _index;
 }
