@@ -25,8 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"b72f427e-28db-4dc9-84d2-f196d2bdc523","path":"sprites/sprGame/sprGame.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b72f427e-28db-4dc9-84d2-f196d2bdc523","path":"sprites/sprGame/sprGame.yy",},"LayerId":{"name":"77037b35-527d-4d02-93fa-99c95c00aa5e","path":"sprites/sprGame/sprGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"b72f427e-28db-4dc9-84d2-f196d2bdc523","path":"sprites/sprGame/sprGame.yy",},"LayerId":{"name":"4b6b6629-e1d6-408a-a8f8-45be45a04291","path":"sprites/sprGame/sprGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"b72f427e-28db-4dc9-84d2-f196d2bdc523","path":"sprites/sprGame/sprGame.yy",},"LayerId":{"name":"77037b35-527d-4d02-93fa-99c95c00aa5e","path":"sprites/sprGame/sprGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"sprGame","path":"sprites/sprGame/sprGame.yy",},"resourceVersion":"1.0","name":"b72f427e-28db-4dc9-84d2-f196d2bdc523","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -71,8 +71,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "System",
+    "path": "folders/Sprites/System.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprGame",

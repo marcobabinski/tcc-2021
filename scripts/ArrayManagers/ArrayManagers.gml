@@ -76,7 +76,7 @@ function getNeighbors(_actualNode) {
 	
 	// Filtrar possibilidades
 	for (var i = array_length(_possibleNeighbors) - 1; i >= 0; i--) {
-		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == 0) {
+		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == VOID) {
 			array_delete(_possibleNeighbors, i, 1);
 		}
 	}

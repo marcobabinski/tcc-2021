@@ -57,7 +57,7 @@ function aiAStar() {
 	
 	// Pega as coordenadas iniciais e finais
 	var _start = [x div 16, y div 16];
-	var _dest = findGoal();
+	var _dest = [objPlayer.x div 16, objPlayer.y div 16];
 	
 	// Adiciona o nó inicial ao array aberto
 	// 1. Inicialize Q com o nó de busca (S) como única entrada;
@@ -109,26 +109,39 @@ function aiAStar() {
 	
 	//show_message(_openQueue);
 	
-	_neighbors = getNeighbors(_openQueue[0][0]);
+	//_neighbors = getNeighbors(_openQueue[0][0]);
 	
-	for (var i = 0; i < array_length(_neighbors); i++) {
-		if (indexOfNode(_closedQueue, _neighbors[i]) == -1
-		and indexOfNode(_openQueue, _neighbors[i]) == -1) {
-			_openQueue = addNode(_openQueue, _neighbors[i][0], _neighbors[i][1], _openQueue[0][0][0], _openQueue[0][0][1], _start, _dest);
-		}
-	}
+	//for (var i = 0; i < array_length(_neighbors); i++) {
+	//	if (indexOfNode(_closedQueue, _neighbors[i]) == -1
+	//	and indexOfNode(_openQueue, _neighbors[i]) == -1) {
+	//		_openQueue = addNode(_openQueue, _neighbors[i][0], _neighbors[i][1], _openQueue[0][0][0], _openQueue[0][0][1], _start, _dest);
+	//	}
+	//}
 	
-	array_insert(_closedQueue, array_length(_closedQueue), _openQueue[0]);
-	array_delete(_openQueue, 0, 1);
+	//array_insert(_closedQueue, array_length(_closedQueue), _openQueue[0]);
+	//array_delete(_openQueue, 0, 1);
 	
-	_openQueue = sortNodes(_openQueue);
+	//_openQueue = sortNodes(_openQueue);
 	
 	// finarmente... da o proximo passo
 	//show_message(_path);
 	
-	if (_path[array_length(_path) - 1][0] != _start[0]) {
-		x += 16 * sign(_path[array_length(_path) - 1][0] - _start[0]);
-	} else if (_path[array_length(_path) - 1][1] != _start[1]) {
-		y += 16 * sign(_path[array_length(_path) - 1][1] - _start[1]);
+	if (array_length(_path) > 0) {
+		var _nextStep = _path[array_length(_path) - 1];
+		
+		// Verificar Inimigos
+        for (var j = 0; j < array_length(listEnemies()); j++) {
+            if (listEnemies()[j][0] == _nextStep[0] and listEnemies()[j][1] == _nextStep[1]) {
+                _nextStep = _start;
+            }
+        }
+		
+		if (_nextStep[0] != _start[0]) {
+			x += 16 * sign(_nextStep[0] - _start[0]);
+		} else if (_nextStep[1] != _start[1]) {
+			y += 16 * sign(_nextStep[1] - _start[1]);
+		}
+	} else {
+		show_message("Sem caminho...")
 	}
 }

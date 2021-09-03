@@ -1,11 +1,10 @@
-if (moves > 0 and not reached) {
-	script_execute(ai);
-	moves--;
-}
+keyRight = keyboard_check_pressed(vk_right);
+keyUp = keyboard_check_pressed(vk_up);
+keyLeft = keyboard_check_pressed(vk_left);
+keyDown = keyboard_check_pressed(vk_down);
 
-if (not reached) {
-	if (tilemap_get(global.tilemap, x div 16, y div 16)) == 2 {
-		show_message("DESTINO ALCANÇADO!");
-		reached = true;
+if (global.status == "g") {
+	if (global.turn == "p") {
+		script_execute(state);
 	}
 }
