@@ -47,5 +47,32 @@ function aiBlindSearch() {
 }
 
 function aiAStar() {
+	// Inicializa os arrays de nós abertos e fechados
+	var _openQueue = [];
+	var _closedQueue = [];
+	
+	// Inicializa o pathing
+	var _path = [];
+	
+	// Pega as coordenadas iniciais e finais
+	var _start = [x div 16, y div 16];
+	var _dest = findGoal();
+	
+	// Adiciona o nó inicial ao array aberto
+	// 1. Inicialize Q com o nó de busca (S) como única entrada;
+	_openQueue = addNode(_openQueue, _start[0], _start[1], 0, 0, _start, _dest);
+	
+	// 2.1 Se Q está vazio, interrompa.
+	//while (array_length(_openQueue) > 0) {
+		// 2.2  Se não, escolha o melhor elemento de Q;
+		
+		// 3. Se o estado (n) é um objetivo, retorne n;
+		
+	//}
+	
+	show_message(array_length(_openQueue));
+	
+	show_message(_openQueue[0][0]);
+	
 	
 }

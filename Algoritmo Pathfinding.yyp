@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"tGeneral","path":"tilesets/tGeneral/tGeneral.yy",},"order":0,},
     {"id":{"name":"ArtificialIntelligence","path":"scripts/ArtificialIntelligence/ArtificialIntelligence.yy",},"order":0,},
+    {"id":{"name":"ArrayManagers","path":"scripts/ArrayManagers/ArrayManagers.yy",},"order":1,},
     {"id":{"name":"objGame","path":"objects/objGame/objGame.yy",},"order":1,},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},"order":0,},
     {"id":{"name":"sprPlayer","path":"sprites/sprPlayer/sprPlayer.yy",},"order":1,},

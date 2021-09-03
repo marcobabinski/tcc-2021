@@ -23,6 +23,8 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 	}
 }
 
-var _tile = global.collisionField[2][2];
+var _tile = [0, 1, 2];
+
+array_delete(_tile, 0, 1)
 
 // show_message(_tile);
