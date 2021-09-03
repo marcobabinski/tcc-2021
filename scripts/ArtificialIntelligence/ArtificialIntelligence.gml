@@ -58,21 +58,32 @@ function aiAStar() {
 	// Pega as coordenadas iniciais e finais
 	var _start = [x div 16, y div 16];
 	var _dest = findGoal();
-	show_message(_start)
 	
 	// Adiciona o nó inicial ao array aberto
 	// 1. Inicialize Q com o nó de busca (S) como única entrada;
 	_openQueue = addNode(_openQueue, _start[0], _start[1], _start[0], _start[1], _start, _dest);
+	//show_message(_openQueue);
 	
 	// 2.1 Se Q está vazio, interrompa.
 	while (array_length(_openQueue) > 0) {
 		// 2.2  Se não, escolha o melhor elemento de Q;
 		_openQueue = sortNodes(_openQueue);
+		//show_message(_openQueue);
 		
 		// 3. Se o estado (n) é um objetivo, retorne n;
-		show_message(string(_openQueue[0][0]) +" == " +string(_dest))
-		if (_openQueue[0][0] == _dest) {
-			show_message("CHEGOU");
+		//show_message(string(_openQueue[0][0]) +" == " +string(_dest))
+		if (_openQueue[0][0][0] == _dest[0] and _openQueue[0][0][1] == _dest[1]) {
+			//show_message("CHEGOU");
+			var _p = _openQueue[0];
+			//show_message(_p);
+			//show_message(_closedQueue);
+			//show_message(indexOfNode(_closedQueue, [3, 1]));
+			while (_p[2] != 0) {
+				//show_message(_p[2])
+				_path[array_length(_path)] = _p[0];
+				//show_message(_path);
+				_p = _closedQueue[indexOfNode(_closedQueue, _p[1])];
+			}
 			break;
 		}
 		
@@ -96,7 +107,7 @@ function aiAStar() {
 	
 	// show_message(array_length(_openQueue));
 	
-	show_message(_openQueue);
+	//show_message(_openQueue);
 	
 	_neighbors = getNeighbors(_openQueue[0][0]);
 	
@@ -112,5 +123,12 @@ function aiAStar() {
 	
 	_openQueue = sortNodes(_openQueue);
 	
+	// finarmente... da o proximo passo
+	//show_message(_path);
 	
+	if (_path[array_length(_path) - 1][0] != _start[0]) {
+		x += 16 * sign(_path[array_length(_path) - 1][0] - _start[0]);
+	} else if (_path[array_length(_path) - 1][1] != _start[1]) {
+		y += 16 * sign(_path[array_length(_path) - 1][1] - _start[1]);
+	}
 }

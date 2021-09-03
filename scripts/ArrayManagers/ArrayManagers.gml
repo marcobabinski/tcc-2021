@@ -68,20 +68,20 @@ function getNeighbors(_actualNode) {
 	
 	// Listar possibilidades
 	_possibleNeighbors[0] = [_actualNode[0] + 1, _actualNode[1]]; // Direita
-	_possibleNeighbors[1] = [_actualNode[0], _actualNode[1] + 1]; // Cima
+	_possibleNeighbors[1] = [_actualNode[0], _actualNode[1] - 1]; // Cima
 	_possibleNeighbors[2] = [_actualNode[0] - 1, _actualNode[1]]; // Esquerda
-	_possibleNeighbors[3] = [_actualNode[0], _actualNode[1] - 1]; // Baixo
+	_possibleNeighbors[3] = [_actualNode[0], _actualNode[1] + 1]; // Baixo
 	
-	show_message(_possibleNeighbors);
+	//show_message(_possibleNeighbors);
 	
 	// Filtrar possibilidades
-	for (var i = array_length(_possibleNeighbors) - 1; i > 0; i--) {
+	for (var i = array_length(_possibleNeighbors) - 1; i >= 0; i--) {
 		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == 0) {
 			array_delete(_possibleNeighbors, i, 1);
 		}
 	}
 	
-	show_message(_possibleNeighbors);
+	//show_message(_possibleNeighbors);
 	
 	// Retornar nós
 	return _possibleNeighbors;
