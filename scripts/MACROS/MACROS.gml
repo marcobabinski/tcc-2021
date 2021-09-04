@@ -10,6 +10,8 @@ function MACROS(){
 	#macro DOOR 5
 	#macro JAR 6
 	#macro OBSTACLE 7
+	#macro LASER 8
+	#macro BUTTON 9
 	
 	// Inimigos
 	#macro SLIME 11

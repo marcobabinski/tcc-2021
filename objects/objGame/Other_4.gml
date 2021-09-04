@@ -42,6 +42,21 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objJar);
 					global.collisionField[i][j] = OBSTACLE;
 					break;
+				case BUTTON:
+					tilemap_set(global.tilemap, 1, i, j);
+					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objButton);
+					global.collisionField[i][j] = FLOOR;
+					break;
+				case DOOR:
+					tilemap_set(global.tilemap, 1, i, j);
+					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objDoor);
+					global.collisionField[i][j] = OBSTACLE;
+					break;
+				case LASER:
+					tilemap_set(global.tilemap, 1, i, j);
+					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objLaser);
+					global.collisionField[i][j] = FLOOR;
+					break;
 			}
 		}
 	}
