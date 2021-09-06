@@ -6,6 +6,13 @@ if (global.turn == "e") {
 	}
 }
 
+// Passar turno dos obstáculos
+if (global.turn == "o") {
+	if (terrainsDone()) {
+		passTurn();
+	}
+}
+
 // Mudar de fase
 if (room != levels[global.level]) {
 	room_goto(levels[global.level]);

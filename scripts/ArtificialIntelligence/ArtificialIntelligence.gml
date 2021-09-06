@@ -149,7 +149,7 @@ if (instance_exists(objPlayer)) {
 			}
 		}
 	} else {
-		show_message("Sem caminho...")
+		//show_message("Sem caminho...")
 	}
 }
 }

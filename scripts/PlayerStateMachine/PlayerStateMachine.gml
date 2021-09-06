@@ -24,6 +24,9 @@ function playerStateFree() {
 								instance_destroy(self);
 								passTurn();
 							}
+							if (object_index == objGoal) {
+								passLevel();
+							}
 					}
 				}
 			}
@@ -51,6 +54,9 @@ function playerStateFree() {
 								global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = FLOOR;
 								instance_destroy(self);
 								passTurn();
+							}
+							if (object_index == objGoal) {
+								passLevel();
 							}
 					}
 				}

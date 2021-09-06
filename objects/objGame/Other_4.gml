@@ -62,8 +62,11 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 	}
 }
 
-var _tile = [0, 1, 2];
+// Summonar Player
+if (not instance_exists(objPlayer)) {
+	instance_create_layer(0, 0, "Player", objPlayer);
+}
 
-array_delete(_tile, 1, 1)
-
-//show_message(_tile);
+// Reposicionar Player
+objPlayer.x = levelStart[global.level][0] * 16
+objPlayer.y = levelStart[global.level][1] * 16
