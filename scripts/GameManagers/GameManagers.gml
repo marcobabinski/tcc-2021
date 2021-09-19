@@ -10,7 +10,9 @@ function passTurn() {
 		with all {
 			if (depth == layer_get_depth(layer_get_id("Terrain"))) {
 				if (object_index == objSpike
-				or object_index == objLaser) {
+				or object_index == objLaser
+				or object_index == objTeleporter
+				or object_index == objCheckpoint) {
 					moves = 1;
 				}
 			}
@@ -18,11 +20,13 @@ function passTurn() {
 		global.turn = "o";
 	} else if (global.turn == "o") {
 		global.turn = "p";
+		objPlayer.moves = 1;
 	}
 }
 
 function passLevel() {
 	global.level++;
+	global.checkpoint = -1;
 }
 
 function listEnemies() {
@@ -88,4 +92,30 @@ function summonRange(_s, _d, _target) {
 	and getPosTile(_target)[1] <= _d[1])) {
 		return true;
 	} else return false;
+}
+
+function checkpointRestart() {
+	
+}
+
+function killEntity(_target) {
+	script_execute(_target.kill);
+}
+
+function writeTextShaky(_text) {
+	var _len = string_length(_text);
+	
+	for(var i = 1; i <= _len; i++) {
+		draw_text(10 + (i * 5) + random_range(-0.3, 0.3), 200 + random_range(-0.3, 0.3), string_char_at(_text, i));
+	}
+}
+
+function writeTextVertWave(_text, _x, _y) {
+	var _len = string_length(_text);
+	var _wid = 0;
+	
+	for(var i = 1; i <= _len; i++) {
+		draw_text(_x + _wid, _y + sin((timer/10) + i), string_char_at(_text, i));
+		_wid += string_width(string_char_at(_text, i));
+	}
 }

@@ -18,4 +18,8 @@ function MACROS(){
 	#macro SKULL 12
 	#macro LOSANGLE 13
 	#macro BULLET 14
+	
+	// Camera
+	#macro SCREEN_WIDTH 1000
+	#macro SCREEN_HEIGHT 1000
 }

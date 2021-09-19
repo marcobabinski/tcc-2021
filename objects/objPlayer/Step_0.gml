@@ -1,10 +1,16 @@
-keyRight = keyboard_check_pressed(vk_right);
-keyUp = keyboard_check_pressed(vk_up);
-keyLeft = keyboard_check_pressed(vk_left);
-keyDown = keyboard_check_pressed(vk_down);
+keyRight = keyboard_check(vk_right);
+keyUp = keyboard_check(vk_up);
+keyLeft = keyboard_check(vk_left);
+keyDown = keyboard_check(vk_down);
 
 if (global.status == "g") {
 	if (global.turn == "p") {
-		script_execute(state);
+		//if (not moving or not attacking) {
+			script_execute(state);
+		//}
 	}
 }
+
+// Atualizar sprite
+depth = -bbox_bottom;
+image_index = facing;

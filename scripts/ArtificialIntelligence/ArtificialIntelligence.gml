@@ -140,7 +140,7 @@ if (instance_exists(objPlayer)) {
 		// Matar player
 		if (_nextStep[0] == getPosTile(objPlayer)[0]
 			and _nextStep[1] == getPosTile(objPlayer)[1]) {
-			instance_destroy(objPlayer);	
+			room_restart();	
 		} else {
 			if (_nextStep[0] != _start[0]) {
 				x += 16 * sign(_nextStep[0] - _start[0]);

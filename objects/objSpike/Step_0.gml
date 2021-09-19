@@ -1,9 +1,4 @@
 if (moves > 0) {
-	//if (spikesLevel < 2) {
-	//	spikesLevel++;
-	//} else {
-	//	spikesLevel = 0;
-	//}
 	
 	switch (spikesLevel) {
 		case 0:
@@ -29,10 +24,4 @@ if (moves > 0) {
 	moves--;
 }
 
-if (spikesLevel == 2) {
-	
-}
-
-if (spikesLevel == 0) sprite_index = sprSpikes0;
-if (spikesLevel == 1) sprite_index = sprSpikes1;
-if (spikesLevel == 2) sprite_index = sprSpikes2;
+image_index = spikesLevel;

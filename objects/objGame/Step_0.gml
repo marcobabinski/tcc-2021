@@ -1,4 +1,11 @@
 /// @desc
+// Passar turno do player
+if (global.turn == "p") {
+	if (objPlayer.moves <= 0 and objPlayer.moving == false and objPlayer.attacking == false) {
+		passTurn();
+	}
+}
+
 // Passar turno dos inimigos
 if (global.turn == "e") {
 	if (enemiesDone()) {
@@ -13,6 +20,13 @@ if (global.turn == "o") {
 	}
 }
 
+// Contagem regressiva da cutscene
+if (global.status == "c") {
+	if (global.cutsceneTime == 0) {
+		global.status = "g";
+	} else global.cutsceneTime--;
+}
+
 // Mudar de fase
 if (room != levels[global.level]) {
 	room_goto(levels[global.level]);
@@ -20,5 +34,5 @@ if (room != levels[global.level]) {
 
 // Player morto
 if (not instance_exists(objPlayer)) {
-	show_message("Tu murió");
+	show_message("Player foi morto :(");
 }

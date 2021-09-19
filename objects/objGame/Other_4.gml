@@ -68,5 +68,18 @@ if (not instance_exists(objPlayer)) {
 }
 
 // Reposicionar Player
-objPlayer.x = levelStart[global.level][0] * 16
-objPlayer.y = levelStart[global.level][1] * 16
+if (global.checkpoint == -1) {
+	objPlayer.x = levelStart[global.level][0] * 16
+	objPlayer.y = levelStart[global.level][1] * 16
+} else {
+	with objCheckpoint {
+		if (global.checkpoint == checkpointId) {
+			objPlayer.x = getPosTile(self)[0] * 16
+			objPlayer.y = getPosTile(self)[1] * 16
+		}
+	}
+}
+
+// Setar camera
+objCamera.x = objPlayer.x - SCREEN_WIDTH;
+objCamera.y = objPlayer.y - SCREEN_HEIGHT;

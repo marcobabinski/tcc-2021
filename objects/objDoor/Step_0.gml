@@ -50,3 +50,11 @@ if (opened) {
 	global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = OBSTACLE;
 	image_index = 0;
 }
+
+// Open cutscene
+if (not alreadyOpened and focusOnOpen and opened) {
+	focusEvent([getPosTile(self)[0], getPosTile(self)[1]], 180)
+}
+
+// Já foi aberta?
+if (opened) alreadyOpened = true;

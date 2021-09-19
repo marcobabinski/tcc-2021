@@ -1,0 +1,2 @@
+movingStretch();
+draw_self();
