@@ -11,7 +11,7 @@ if (moves > 0) {
 					or object_index == objPlayer) {
 						if (getPosTile(self)[0] == getPosTile(other)[0]
 						and getPosTile(self)[1] == getPosTile(other)[1]) {
-							instance_destroy(self);
+							killEntity(self);
 					}	
 				}
 			}

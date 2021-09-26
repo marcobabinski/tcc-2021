@@ -41,7 +41,7 @@ if (not attacking) {
 } else {
 	switch (objPlayer.facing) {
 	case 0:
-		targetx = objPlayer.x;
+		targetx = objPlayer.x + 8;
 		targety = objPlayer.y + 10;
 		image_xscale = 1;
 		image_yscale = 1;
@@ -57,8 +57,8 @@ if (not attacking) {
 		depth = objPlayer.depth + 1;
 		break;
 	case 2:
-		targetx = objPlayer.x + 14;
-		targety = objPlayer.y;
+		targetx = objPlayer.x - 6;
+		targety = objPlayer.y + 12;
 		image_xscale = -1;
 		image_yscale = 1;
 		image_angle = 270;
