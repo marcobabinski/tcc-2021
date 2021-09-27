@@ -30,4 +30,6 @@ if (global.debug) {
 	draw_text(2, 52, "Movendo: " +string(objPlayer.moving));
 	draw_text(2, 62, "Moves: " +string(objPlayer.moves));
 	draw_text(2, 72, "Turno: " +string(global.turn));
+	draw_text(92, 2, "Player: " +string(getPosTile(objPlayer)));
+	draw_text(92, 12, "Tp: " +string(getPosTile(objTeleporter)));
 }

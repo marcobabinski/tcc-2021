@@ -17,6 +17,14 @@ if (summoned) {
 	moves = 0;
 }
 
+if (round(x) != targetX or round(y) != targetY) {
+		x += (targetX - x)/2;
+		y += (targetY - y)/2;
+	} else {
+		x = round(x);
+		y = round(y);
+}
+
 image_alpha = summoned;
 
 if (charged) sprite_index = sprSlimeCharged;

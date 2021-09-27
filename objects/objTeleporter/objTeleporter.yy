@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprTeleporter",
-    "path": "sprites/sprTeleporter/sprTeleporter.yy",
+    "name": "sprTeleporterAlt",
+    "path": "sprites/sprTeleporterAlt/sprTeleporterAlt.yy",
   },
   "solid": false,
   "visible": true,

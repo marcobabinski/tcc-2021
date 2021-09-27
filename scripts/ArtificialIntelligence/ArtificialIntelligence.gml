@@ -143,9 +143,9 @@ if (instance_exists(objPlayer)) {
 			room_restart();	
 		} else {
 			if (_nextStep[0] != _start[0]) {
-				x += 16 * sign(_nextStep[0] - _start[0]);
+				targetX += 16 * sign(_nextStep[0] - _start[0]);
 			} else if (_nextStep[1] != _start[1]) {
-				y += 16 * sign(_nextStep[1] - _start[1]);
+				targetY += 16 * sign(_nextStep[1] - _start[1]);
 			}
 		}
 	} else {

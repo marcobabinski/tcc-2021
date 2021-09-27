@@ -20,6 +20,12 @@ if (global.turn == "o") {
 	}
 }
 
+// Warning Tile
+if (global.turn == "p") {
+	warningDelay = max(0, warningDelay - 1);
+	warningCountdown = max(0, warningCountdown - 1);
+}
+
 // Contagem regressiva da cutscene
 if (global.status == "c") {
 	if (global.cutsceneTime == 0) {

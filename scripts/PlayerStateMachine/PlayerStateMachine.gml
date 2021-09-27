@@ -5,6 +5,9 @@ function PlayerStateMachine(){
 }
 
 function playerStateFree() {
+sprite_index = sprPlayerIdle;
+image_speed = 0;
+
 if (moves > 0) {
 	if ((keyRight - keyLeft != 0) xor (keyDown - keyUp != 0)) {
 		if (keyRight - keyLeft != 0 and moves > 0) {
@@ -100,6 +103,8 @@ if (moves > 0) {
 }
 
 function playerStateMoving() {
+	sprite_index = sprPlayerIdle;
+	image_speed = 0;
 	if (round(x) != targetX or round(y) != targetY) {
 		x += (targetX - x)/3;
 		y += (targetY - y)/3;
@@ -112,6 +117,8 @@ function playerStateMoving() {
 }
 
 function playerStateAttacking() {
+	sprite_index = sprPlayerIdle;
+	image_speed = 0;
 	if (attackDuration > 0) {
 		objSword.attacking = true;
 		attackDuration = max(0, attackDuration - 1);
@@ -120,6 +127,26 @@ function playerStateAttacking() {
 		objSword.attacking = false;
 		attacking = false;
 		attackDuration = 0;
+	}
+}
+
+function playerStateTeleporting() {
+	if (image_index == 14) {
+		image_speed = 0;
+		if (round(x) != targetX or round(y) != targetY) {
+			x += (targetX - x)/30;
+			y += (targetY - y)/30;
+		} else {
+			x = round(x);
+			y = round(y);
+			image_speed = -1;
+		}
+	}
+	
+	if (image_index == 0 and image_speed == -1) {
+			facing = 3;
+			state = playerStateFree;
+			moving = false;
 	}
 }
 

@@ -20,6 +20,6 @@ function MACROS(){
 	#macro BULLET 14
 	
 	// Camera
-	#macro SCREEN_WIDTH 1000
-	#macro SCREEN_HEIGHT 1000
+	#macro SCREEN_WIDTH 320
+	#macro SCREEN_HEIGHT 180
 }

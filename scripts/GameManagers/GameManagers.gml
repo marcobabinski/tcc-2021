@@ -21,6 +21,40 @@ function passTurn() {
 	} else if (global.turn == "o") {
 		global.turn = "p";
 		objPlayer.moves = 1;
+		
+		// Tiles de Perigo
+		with (all) {
+			// Inimigos
+			if (depth == layer_get_depth(layer_get_id("Enemies"))) {
+				// X
+				//if (abs(abs(getPosTile(objPlayer)[0]) - abs(getPosTile(self)[0])) == 2) {
+				//	instance_create_layer(objPlayer.x + (16 * sign(self.x - objPlayer.x)), objPlayer.y, "Particles", objWarningTile);
+				//}
+				
+				// Y
+				//if (abs(abs(getPosTile(objPlayer)[1]) - abs(getPosTile(self)[1])) == 2) {
+				//	instance_create_layer(objPlayer.x, objPlayer.y  + (16 * sign(self.y - objPlayer.y)), "Particles", objWarningTile);
+				//}
+				
+				if (object_index == objSlime) {
+					if (charged) {
+						instance_create_layer(self.x + 16, self.y, "Particles", objWarningTile);
+						instance_create_layer(self.x - 16, self.y, "Particles", objWarningTile);
+						instance_create_layer(self.x, self.y + 16, "Particles", objWarningTile);
+						instance_create_layer(self.x, self.y - 16, "Particles", objWarningTile);
+					}
+				} else {
+					instance_create_layer(self.x + 16, self.y, "Particles", objWarningTile);
+					instance_create_layer(self.x - 16, self.y, "Particles", objWarningTile);
+					instance_create_layer(self.x, self.y + 16, "Particles", objWarningTile);
+					instance_create_layer(self.x, self.y - 16, "Particles", objWarningTile);
+				}
+				
+			}
+		}
+		
+		warningDelay = 90;
+		warningCountdown = warningDelay + 15;
 	}
 }
 
@@ -58,6 +92,7 @@ function enemiesDone() {
 	with all {
 		if (depth == _depth) {
 			if (moves > 0) _done = false;
+			if (targetX != x or targetY != y) _done = false;
 		};
 	}
 	

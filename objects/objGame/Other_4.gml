@@ -1,4 +1,4 @@
-/// @description
+ /// @description
 // Randomiza a seed
 randomize();
 
@@ -56,6 +56,11 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 					tilemap_set(global.tilemap, 1, i, j);
 					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objLaser);
 					global.collisionField[i][j] = FLOOR;
+					break;
+				case WALL:
+					tilemap_set(global.tilemap, 1, i, j);
+					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objWall);
+					//global.collisionField[i][j] = FLOOR;
 					break;
 			}
 		}

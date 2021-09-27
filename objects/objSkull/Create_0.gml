@@ -1,6 +1,10 @@
 moves = 0;
 reached = false;
 ai = aiAStar;
+kill = losangleKill;
+
+targetX = x;
+targetY = y;
 
 // Floating
 // Animação
