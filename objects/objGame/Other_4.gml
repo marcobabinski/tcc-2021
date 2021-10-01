@@ -35,7 +35,7 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 				case GOAL:
 					tilemap_set(global.tilemap, 1, i, j);
 					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objGoal);
-					global.collisionField[i][j] = OBSTACLE;
+					global.collisionField[i][j] = GOAL;
 					break;
 				case JAR:
 					tilemap_set(global.tilemap, 1, i, j);
@@ -60,7 +60,7 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 				case WALL:
 					tilemap_set(global.tilemap, 1, i, j);
 					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objWall);
-					//global.collisionField[i][j] = FLOOR;
+					global.collisionField[i][j] = OBSTACLE;
 					break;
 			}
 		}

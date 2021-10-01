@@ -1,4 +1,5 @@
 state = playerStateFree;
+kill = playerDeath;
 moves = 1;
 moving = false;
 attacking = false;

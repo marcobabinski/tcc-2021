@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprNextLevelPortal",
-    "path": "sprites/sprNextLevelPortal/sprNextLevelPortal.yy",
+    "name": "sprNextLevelPortal2",
+    "path": "sprites/sprNextLevelPortal2/sprNextLevelPortal2.yy",
   },
   "solid": false,
   "visible": true,

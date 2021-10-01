@@ -12,7 +12,8 @@ function passTurn() {
 				if (object_index == objSpike
 				or object_index == objLaser
 				or object_index == objTeleporter
-				or object_index == objCheckpoint) {
+				or object_index == objCheckpoint
+				or object_index == objGoal) {
 					moves = 1;
 				}
 			}
@@ -61,6 +62,8 @@ function passTurn() {
 function passLevel() {
 	global.level++;
 	global.checkpoint = -1;
+	
+	global.status = "c";
 }
 
 function listEnemies() {
@@ -69,6 +72,17 @@ function listEnemies() {
 	
 	with all {
 		if (depth == _depth) _enemies[array_length(_enemies)] = [x div 16, y div 16];
+	}
+	
+	return _enemies;
+}
+
+function listEnemiesNext() {
+	var _depth = layer_get_depth(layer_get_id("Enemies"));
+	var _enemies = [];
+	
+	with all {
+		if (depth == _depth) _enemies[array_length(_enemies)] = [targetX div 16, targetY div 16];
 	}
 	
 	return _enemies;

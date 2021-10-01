@@ -1,9 +1,3 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function PlayerStateMachine(){
-
-}
-
 function playerStateFree() {
 sprite_index = sprPlayerIdle;
 image_speed = 0;
@@ -31,15 +25,16 @@ if (moves > 0) {
 								instance_destroy(self);
 								passTurn();
 							}
-							if (object_index == objGoal) {
-								passLevel();
-							}
+							//if (object_index == objGoal) {
+							//	show_message("alo");
+							//}
 					}
 				}
 			}
 			
 			if (global.turn == "p" and moves > 0) {
-				if (tileAt(x div 16 + (keyRight - keyLeft), y div 16) == FLOOR) {
+				if (tileAt(x div 16 + (keyRight - keyLeft), y div 16) == FLOOR
+				or tileAt(x div 16 + (keyRight - keyLeft), y div 16) == GOAL) {
 					//x += 16 * sign(keyRight - keyLeft);
 					particleMoveSmoke();
 					targetX = x + (16 * sign(keyRight - keyLeft));
@@ -71,9 +66,9 @@ if (moves > 0) {
 								instance_destroy(self);
 								passTurn();
 							}
-							if (object_index == objGoal) {
-								passLevel();
-							}
+							//if (object_index == objGoal) {
+							//passLevel();
+							//}
 					}
 				}
 			}
@@ -158,4 +153,8 @@ function movingStretch() {
 		image_yscale = min(1, image_yscale + 0.05);
 		image_yscale = max(0.9, image_yscale - 0.05);
 	}
+}
+
+function playerDeath() {
+	room_restart();
 }

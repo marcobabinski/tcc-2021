@@ -76,13 +76,40 @@ function getNeighbors(_actualNode) {
 	
 	// Filtrar possibilidades
 	for (var i = array_length(_possibleNeighbors) - 1; i >= 0; i--) {
+		var _impossible = false;
+		
 		// Tiles indevidos
 		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == VOID
 			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == WALL
 			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == GOAL
 			or global.collisionField[_possibleNeighbors[i][0]][_possibleNeighbors[i][1]] == OBSTACLE) {
-			array_delete(_possibleNeighbors, i, 1);
+			_impossible = true;
 		}
+		
+		// Inimigo no spot
+		if (abs(_possibleNeighbors[i][0] - getPosTile(self)[0]) + abs(_possibleNeighbors[i][1] - getPosTile(self)[1]) == 1) {
+			if (not _impossible) {
+				with objSkull {
+					if (depth == layer_get_depth(layer_get_id("Enemies"))) {
+						if (_possibleNeighbors[i][0] == targetX div 16 and _possibleNeighbors[i][1] == targetY div 16) {
+							_impossible = true;
+						}
+					}
+				}
+			
+				with objSlime {
+					if (depth == layer_get_depth(layer_get_id("Enemies"))) {
+						if (_possibleNeighbors[i][0] == targetX div 16 and _possibleNeighbors[i][1] == targetY div 16) {
+							_impossible = true;
+						}
+					}
+				}
+			}
+		}
+		
+		//show_message("O tile " +string(_possibleNeighbors[i]) +" está a " +string(1));
+		
+		if (_impossible) array_delete(_possibleNeighbors, i, 1);
 		
 		//with all {
 		//		if (object_index == objJar
@@ -93,6 +120,8 @@ function getNeighbors(_actualNode) {
 		//			}
 		//		}
 		//	}
+		
+		
 	}
 	
 	// Jarros / Portal

@@ -47,6 +47,7 @@ function aiBlindSearch() {
 }
 
 function aiAStar() {
+
 if (instance_exists(objPlayer)) {
 	// Inicializa os arrays de nós abertos e fechados
 	var _openQueue = [];
@@ -131,16 +132,16 @@ if (instance_exists(objPlayer)) {
 		var _nextStep = _path[array_length(_path) - 1];
 		
 		// Verificar Inimigos
-        for (var j = 0; j < array_length(listEnemies()); j++) {
-            if (listEnemies()[j][0] == _nextStep[0] and listEnemies()[j][1] == _nextStep[1]) {
-                _nextStep = _start;
-            }
-        }
+        //for (var j = 0; j < array_length(listEnemies()); j++) {
+        //    if (listEnemiesNext()[j][0] == _nextStep[0] and listEnemiesNext()[j][1] == _nextStep[1]) {
+        //        _nextStep = _start;
+        //    }
+        //}
 		
 		// Matar player
 		if (_nextStep[0] == getPosTile(objPlayer)[0]
 			and _nextStep[1] == getPosTile(objPlayer)[1]) {
-			room_restart();	
+			killEntity(objPlayer);
 		} else {
 			if (_nextStep[0] != _start[0]) {
 				targetX += 16 * sign(_nextStep[0] - _start[0]);
