@@ -27,11 +27,15 @@ if (global.turn == "p") {
 }
 
 // Contagem regressiva da cutscene
-if (global.status == "c") {
-	if (global.cutsceneTime == 0) {
-		global.status = "g";
-	} else global.cutsceneTime--;
-}
+//if (global.status == "c") {
+//	if (global.cutsceneTime == 0) {
+//		global.status = "g";
+//	} else global.cutsceneTime--;
+//}
+
+// Tornar modo cutscene
+if (checkCutscene()) global.status = "c";
+else global.status = "g";
 
 // Mudar de fase
 if (room != levels[global.level]) {

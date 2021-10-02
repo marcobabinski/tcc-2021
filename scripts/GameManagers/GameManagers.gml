@@ -143,10 +143,6 @@ function summonRange(_s, _d, _target) {
 	} else return false;
 }
 
-function checkpointRestart() {
-	
-}
-
 function killEntity(_target) {
 	script_execute(_target.kill);
 }
@@ -167,4 +163,17 @@ function writeTextVertWave(_text, _x, _y) {
 		draw_text(_x + _wid, _y + sin((timer/10) + i), string_char_at(_text, i));
 		_wid += string_width(string_char_at(_text, i));
 	}
+}
+
+function checkCutscene() {
+	var _list = [objLevelTitle, objLevelRestart];
+	var _cutscene = false;
+	
+	for (var i = 0; i < array_length(_list); i++) {
+		with (_list[i]) {
+			if (active) _cutscene = true;
+		}
+	}
+	
+	return _cutscene;
 }

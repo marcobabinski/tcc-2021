@@ -16,3 +16,16 @@ function focusEvent(_target, _time) {
 		focus = _target;
 	}
 }
+
+function levelTitleEvent(_title, _duration) {
+	objLevelTitle.levelTitle = _title;
+	objLevelTitle.duration = _duration;
+}
+
+function checkpointRestartEvent(_duration) {
+	objLevelRestart.duration = _duration;
+}
+
+function nextLevelEvent(_duration) {
+	objNextLevel.duration = _duration;
+}
