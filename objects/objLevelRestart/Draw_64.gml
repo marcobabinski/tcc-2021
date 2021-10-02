@@ -34,12 +34,3 @@ if (active) {
 	// Resetar opacidade
 	draw_set_alpha(1);
 }
-
-// Debug
-if (true) {
-	draw_set_color(c_black);
-	draw_set_font(fonHeartbit2);
-	draw_text(2, 2, "whiteAlpha: " +string(whiteAlpha));
-	draw_text(2, 12, "restartDelay: " +string(restartDelay));
-	draw_text(2, 22, "duration: " +string(duration));
-}

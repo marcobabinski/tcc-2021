@@ -14,4 +14,4 @@ if (global.status == "g") {
 // Atualizar sprite
 depth = -bbox_bottom;
 
-if (state != playerStateTeleporting) image_index = facing;
+if (state != playerStateTeleporting and state != playerStateNextLevel) image_index = facing;

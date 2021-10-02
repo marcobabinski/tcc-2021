@@ -3,7 +3,8 @@ if (not active and duration > 0) {
 	// Setar configs
 	active = true;
 	resize = 10;
-	portalDelay = 50;
+	portalDelay = 120;
+	disappearDelay = 50;
 	stage = 0;
 }
 
@@ -14,7 +15,8 @@ if (active) {
 		// Resetar configs
 		active = false;
 		resize = 10;
-		portalDelay = 50;
+		portalDelay = 120;
+		disappearDelay = 50;
 		stage = 0;
 		duration = 0;
 	}

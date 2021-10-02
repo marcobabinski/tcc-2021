@@ -158,3 +158,20 @@ function movingStretch() {
 function playerDeath() {
 	room_restart();
 }
+
+function playerStateNextLevel() {
+	if (objNextLevel.portalDelay > 90) {
+		image_index = 3;
+	}
+	
+	if (objNextLevel.portalDelay < 90 and objNextLevel.portalDelay > 40) {
+		image_index = 0;
+		sprite_index = sprPlayerComplete;
+	}
+	
+	if (objNextLevel.portalDelay < 40) {
+		image_index += 0.5;
+		//image_speed = 1;
+	}
+	
+}
