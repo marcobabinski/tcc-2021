@@ -58,11 +58,12 @@ if (menu == 0) {
 		for (var i = 0; i < 4; i++) {
 			draw_text(SCREEN_WIDTH/2 - string_width(ig_mn_text[i])/2, 50 + 25 * i + 3, ig_mn_text[i]);
 		}
+		// Tela opções
 	} else if (ig_screen == 1) {
 		// Voltar
 		if (keyCancel) {
 			ig_screen = 0;
-			ig_pos = 0;
+			ig_pos = 1;
 		}
 		
 		// Mudar pos
@@ -92,7 +93,7 @@ if (menu == 0) {
 			        break;
 				case 3:
 			        ig_screen = 0;
-					ig_pos = 0;
+					ig_pos = 1;
 			        break;
 			    default:
 			        break;

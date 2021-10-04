@@ -66,6 +66,9 @@ function getNeighbors(_actualNode) {
 	// Possíveis vizinhos
 	var _possibleNeighbors = [];
 	
+	// Impassáveis
+	var _blockList = [objGoal, objCheckpoint, objTeleporter];
+	
 	// Listar possibilidades
 	_possibleNeighbors[0] = [_actualNode[0] + 1, _actualNode[1]]; // Direita
 	_possibleNeighbors[1] = [_actualNode[0], _actualNode[1] - 1]; // Cima
@@ -82,7 +85,8 @@ function getNeighbors(_actualNode) {
 		if (tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == VOID
 			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == WALL
 			or tilemap_get(global.tilemap, _possibleNeighbors[i][0], _possibleNeighbors[i][1]) == GOAL
-			or global.collisionField[_possibleNeighbors[i][0]][_possibleNeighbors[i][1]] == OBSTACLE) {
+			or global.collisionField[_possibleNeighbors[i][0]][_possibleNeighbors[i][1]] == OBSTACLE
+			or global.collisionField[_possibleNeighbors[i][0]][_possibleNeighbors[i][1]] == PLAYERONLY) {
 			_impossible = true;
 		}
 		

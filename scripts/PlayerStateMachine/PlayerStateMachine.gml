@@ -22,8 +22,11 @@ if (moves > 0) {
 						and getPosTile(self)[1] == getPosTile(objPlayer)[1]) {
 							if (object_index == objJar) {
 								global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = FLOOR;
-								instance_destroy(self);
-								passTurn();
+								killEntity(self);
+								other.moves--;
+								other.attacking = true;
+								other.state = playerStateAttacking;
+								other.attackDuration = 15;
 							}
 							//if (object_index == objGoal) {
 							//	show_message("alo");
@@ -34,7 +37,8 @@ if (moves > 0) {
 			
 			if (global.turn == "p" and moves > 0) {
 				if (tileAt(x div 16 + (keyRight - keyLeft), y div 16) == FLOOR
-				or tileAt(x div 16 + (keyRight - keyLeft), y div 16) == GOAL) {
+				or tileAt(x div 16 + (keyRight - keyLeft), y div 16) == GOAL
+				or tileAt(x div 16, y div 16  + (keyDown - keyUp)) == PLAYERONLY) {
 					//x += 16 * sign(keyRight - keyLeft);
 					particleMoveSmoke();
 					targetX = x + (16 * sign(keyRight - keyLeft));
@@ -63,8 +67,11 @@ if (moves > 0) {
 						and getPosTile(self)[1] == getPosTile(objPlayer)[1] + (objPlayer.keyDown - objPlayer.keyUp)) {
 							if (object_index == objJar) {
 								global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = FLOOR;
-								instance_destroy(self);
-								passTurn();
+								killEntity(self);
+								other.moves--;
+								other.attacking = true;
+								other.state = playerStateAttacking;
+								other.attackDuration = 15;
 							}
 							//if (object_index == objGoal) {
 							//passLevel();
@@ -74,7 +81,9 @@ if (moves > 0) {
 			}
 			
 			if (global.turn == "p" and moves > 0) {
-				if (tileAt(x div 16, y div 16  + (keyDown - keyUp)) == FLOOR) {
+				if (tileAt(x div 16, y div 16  + (keyDown - keyUp)) == FLOOR
+				or tileAt(x div 16, y div 16  + (keyDown - keyUp)) == GOAL
+				or tileAt(x div 16, y div 16  + (keyDown - keyUp)) == PLAYERONLY) {
 					//y += 16 * sign(keyDown - keyUp);
 					particleMoveSmoke();
 					targetY = y + (16 * sign(keyDown - keyUp));

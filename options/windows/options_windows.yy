@@ -1,4 +1,7 @@
 {
+  "ConfigValues": {
+    "Teste": {"option_windows_copy_exe_to_dest":"true","option_windows_company_info":"","option_windows_executable_name":"${ChessCat}.exe","option_windows_display_name":"ChessCat",},
+  },
   "option_windows_display_name": "Created with GameMaker Studio 2",
   "option_windows_executable_name": "${project_name}.exe",
   "option_windows_version": "1.0.0.0",

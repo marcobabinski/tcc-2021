@@ -12,6 +12,7 @@ function MACROS(){
 	#macro OBSTACLE 7
 	#macro LASER 8
 	#macro BUTTON 9
+	#macro PLAYERONLY 10
 	
 	// Inimigos
 	#macro SLIME 11
