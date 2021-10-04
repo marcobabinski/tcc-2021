@@ -1,5 +1,7 @@
 function passTurn() {
 	if (global.turn == "p") {
+		objCull.moves = 1;
+		
 		with all {
 			if (depth == layer_get_depth(layer_get_id("Enemies"))) {
 				moves = 1;
@@ -176,4 +178,13 @@ function checkCutscene() {
 	}
 	
 	return _cutscene;
+}
+
+function cullRange(_entity) {
+	if (_entity.x < objCull.startx
+		or _entity.x > objCull.endx
+		or _entity.y < objCull.starty
+		or _entity.y > objCull.endy) {
+			return true;
+		} else return false;
 }

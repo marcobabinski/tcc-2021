@@ -164,14 +164,18 @@ function playerStateNextLevel() {
 		image_index = 3;
 	}
 	
-	if (objNextLevel.portalDelay < 90 and objNextLevel.portalDelay > 40) {
+	if (objNextLevel.portalDelay < 90 and objNextLevel.portalDelay > 60) {
 		image_index = 0;
 		sprite_index = sprPlayerComplete;
 	}
 	
-	if (objNextLevel.portalDelay < 40) {
-		image_index += 0.5;
+	if (objNextLevel.portalDelay < 60) {
+		image_index += 0.7;
 		//image_speed = 1;
+	}
+	
+	if (objNextLevel.stage == 2) {
+		state = playerStateFree;
 	}
 	
 }

@@ -7,8 +7,14 @@ global.checkpoint = -1;
 global.cutsceneTime = 0;
 global.debug = true;
 
+// Configs
+global.musicVolume = 0.5;
+global.soundVolume = 0.5;
+global.fullscreen = false;
+
 levels = [LevelTutorial, Level11, Level12, Level13];
 levelStart = [[23, 38], [2, 3], [14, 3], [5, 1]];
+levelTitle = ["Tutorial", "Level 1-1"];
 
 warningDelay = 90;
 warningCountdown = warningDelay + 15;

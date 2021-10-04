@@ -11,7 +11,7 @@ if (active) {
 	
 	// Gato pisca e estrela
 	if (stage == 1) {
-		if (portalDelay == 0) stage = 2;
+		//if (portalDelay == 0) stage = 2;
 		
 		// Estrelinha
 		if (portalDelay == 90) {
@@ -26,6 +26,7 @@ if (active) {
 		}
 		
 		if ((40 - portalDelay) / 10 == 1) {
+			stage = 2;
 			passLevel();
 		}
 		
@@ -38,13 +39,18 @@ if (active) {
 	if (stage == 2) {
 		draw_set_alpha((40 - portalDelay) / 10);
 		draw_set_color(color);
-		draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false);
-		draw_rectangle(0 + (336/disappearDelay), 0, 320, 180, false);
+		//draw_rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false);
+		draw_rectangle((336/disappearDelay) - 16, 0, 320, 180, false);
 		
-		draw_sprite(sprNextLevelSpikes, 0, 336/disappearDelay, 0)
+		draw_sprite(sprNextLevelSpikes, 0, 336/disappearDelay - 32, 0)
 		
-		disappearDelay = max(0, disappearDelay--);
+		disappearDelay = max(0, disappearDelay - 1);
 		// objPlayer.state = playerStateFree;
+		
+		if (disappearDelay < 1) {
+			duration = 0;
+			levelTitleEvent(objGame.levelTitle[global.level], 200);
+		}
 	}
 	
 	// Resetar opacidade
@@ -52,19 +58,12 @@ if (active) {
 }
 
 // Debug
-if (false) {
-	draw_set_color(c_black);
-	draw_set_font(fonHeartbit2);
-	draw_text(2, 2, "whiteAlpha: " +string(whiteAlpha));
-	draw_text(2, 12, "restartDelay: " +string(restartDelay));
-	draw_text(2, 22, "duration: " +string(duration));
-}
-
-// Debug
 if (true) {
 	draw_set_color(c_black);
 	draw_set_font(fonHeartbit2);
-	draw_text(2, 2, "whiteAlpha: " +string(whiteAlpha));
-	draw_text(2, 12, "restartDelay: " +string(restartDelay));
-	draw_text(2, 22, "duration: " +string(duration));
+	draw_text(2, 2, "resize: " +string(resize));
+	draw_text(2, 12, "portalDelay: " +string(portalDelay));
+	draw_text(2, 22, "disappearDelay: " +string(disappearDelay));
+	draw_text(2, 32, "stage: " +string(stage));
+	draw_text(2, 42, "duration: " +string(duration));
 }

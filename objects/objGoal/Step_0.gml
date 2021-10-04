@@ -2,10 +2,7 @@
 if (global.turn == "o" and moves > 0) {
 	if (getPosTile(self)[0] == getPosTile(objPlayer)[0]
 		and getPosTile(self)[1] == getPosTile(objPlayer)[1]) {
-		passLevel();
-		//show_message(global.level);
-		//global.level++;
-		//show_message(global.level);
+		nextLevelEvent(300);
 	}
 	
 	moves--;

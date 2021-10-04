@@ -46,3 +46,13 @@ if (room != levels[global.level]) {
 if (not instance_exists(objPlayer)) {
 	show_message("Player foi morto :(");
 }
+
+// Checar menu
+if (objMenu.menu > -1) {
+	global.status = "m";
+}
+
+// Tela cheia
+if (global.fullscreen != window_get_fullscreen()) {
+	window_set_fullscreen(global.fullscreen);
+}

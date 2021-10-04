@@ -88,3 +88,6 @@ if (global.checkpoint == -1) {
 // Setar camera
 objCamera.x = objPlayer.x - SCREEN_WIDTH;
 objCamera.y = objPlayer.y - SCREEN_HEIGHT;
+
+
+// Limpar instancias
