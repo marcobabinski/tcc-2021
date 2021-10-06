@@ -149,11 +149,13 @@ function killEntity(_target) {
 	script_execute(_target.kill);
 }
 
-function writeTextShaky(_text) {
+function writeTextShaky(_text, _x, _y) {
 	var _len = string_length(_text);
+	var _wid = 0;
 	
 	for(var i = 1; i <= _len; i++) {
-		draw_text(10 + (i * 5) + random_range(-0.3, 0.3), 200 + random_range(-0.3, 0.3), string_char_at(_text, i));
+		draw_text(_x + _wid + random_range(0.4, -0.4), _y + random_range(0.4, -0.4), string_char_at(_text, i));
+		_wid += string_width(string_char_at(_text, i));
 	}
 }
 

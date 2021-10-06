@@ -1,2 +1,2 @@
-/// @description Reseta o jogo
-game_restart();
+/// @description Reseta a sala
+checkpointRestartEvent(300);
