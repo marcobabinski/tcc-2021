@@ -141,6 +141,7 @@ if (instance_exists(objPlayer)) {
 		// Matar player
 		if (_nextStep[0] == getPosTile(objPlayer)[0]
 			and _nextStep[1] == getPosTile(objPlayer)[1]) {
+			objPlayerDeath.highlightEntity = self;
 			killEntity(objPlayer);
 		} else {
 			if (_nextStep[0] != _start[0]) {

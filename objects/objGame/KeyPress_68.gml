@@ -3,3 +3,4 @@
 //checkpointRestartEvent(300);
 //nextLevelEvent(300);
 //instance_deactivate_object(objSlime);
+global.level++;

@@ -7,3 +7,4 @@ if (moves > 0) {
 	
 	moves--;
 }
+

@@ -38,7 +38,7 @@ if (moves > 0) {
 			if (global.turn == "p" and moves > 0) {
 				if (tileAt(x div 16 + (keyRight - keyLeft), y div 16) == FLOOR
 				or tileAt(x div 16 + (keyRight - keyLeft), y div 16) == GOAL
-				or tileAt(x div 16, y div 16  + (keyDown - keyUp)) == PLAYERONLY) {
+				or tileAt(x div 16 + (keyRight - keyLeft), y div 16) == PLAYERONLY) {
 					//x += 16 * sign(keyRight - keyLeft);
 					particleMoveSmoke();
 					targetX = x + (16 * sign(keyRight - keyLeft));
@@ -165,7 +165,7 @@ function movingStretch() {
 }
 
 function playerDeath() {
-	room_restart();
+	playerDeathEvent(270);
 }
 
 function playerStateNextLevel() {
@@ -183,8 +183,21 @@ function playerStateNextLevel() {
 		//image_speed = 1;
 	}
 	
-	if (objNextLevel.stage == 2) {
+	if (objNextLevel.duration < 1) {
 		state = playerStateFree;
 	}
 	
+}
+
+function playerStateDeath() {
+	sprite_index = sprPlayerDead;
+	
+	if (image_index == sprite_get_number(sprPlayerDead) - 1) {
+		image_speed = 0;
+		objPlayerDeath.stage = 2;
+	}
+	
+	if (objPlayerDeath.duration < 1) {
+		state = playerStateFree;
+	}
 }

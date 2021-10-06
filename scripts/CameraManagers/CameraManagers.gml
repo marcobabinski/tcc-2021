@@ -29,3 +29,7 @@ function checkpointRestartEvent(_duration) {
 function nextLevelEvent(_duration) {
 	objNextLevel.duration = _duration;
 }
+
+function playerDeathEvent(_duration) {
+	objPlayerDeath.duration = _duration;
+}

@@ -16,6 +16,8 @@ and abs(getPosTile(self)[1] - getPosTile(objPlayer)[1] == 1)) {
 if (abs(getPosTile(self)[0] - getPosTile(objPlayer)[0]) > 1) instance_destroy(self);
 if (abs(getPosTile(self)[1] - getPosTile(objPlayer)[1]) > 1) instance_destroy(self);
 
+if (objPlayerDeath.active or objNextLevel.active) instance_destroy(self);
+
 // Tirar de cima de inimigos
 with (all) {
 	// Inimigos

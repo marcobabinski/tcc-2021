@@ -45,10 +45,10 @@ if (reverseLock) opened = false;
 // Barrar e atualizar sprite
 if (opened) {
 	global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = FLOOR;
-	image_index = 1;
+	image_index = min(11, image_index + 1);
 } else {
 	global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = OBSTACLE;
-	image_index = 0;
+	image_index = max(0, image_index - 1);
 }
 
 // Open cutscene

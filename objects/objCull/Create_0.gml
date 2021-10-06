@@ -1,6 +1,6 @@
 moves = 0;
 
 deactiveList = [objSlime, objSkull, //Inimigos
-objWall, objJar, objGoal] // Elementos
+objWall, objGoal] // Elementos
 
 // deactived = [];

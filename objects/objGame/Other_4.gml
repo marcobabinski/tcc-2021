@@ -62,6 +62,9 @@ for(var i = 0; i < tilemap_get_height(global.tilemap); i++) {
 					instance_create_layer(i * 16, j * 16, layer_get_id("Terrain"), objWall);
 					global.collisionField[i][j] = OBSTACLE;
 					break;
+				case PLAYERONLY:
+					global.collisionField[i][j] = PLAYERONLY;
+					break;
 			}
 		}
 	}
@@ -90,4 +93,11 @@ objCamera.x = objPlayer.x - SCREEN_WIDTH;
 objCamera.y = objPlayer.y - SCREEN_HEIGHT;
 
 
-// Limpar instancias
+// Setar os "Playeronly"
+var poList = [objTeleporter, objGoal, objCheckpoint];
+for (var i = 0; i < array_length(poList); i++) {
+	with (poList[i]) {
+		tilemap_set(global.tilemap, PLAYERONLY, getPosTile(self)[0], getPosTile(self)[1]);
+		global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = PLAYERONLY;
+	}
+}

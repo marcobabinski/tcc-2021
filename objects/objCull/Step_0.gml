@@ -17,4 +17,6 @@ if (moves > 0) {
 	instance_activate_region(startx, starty, SCREEN_WIDTH + 32, SCREEN_HEIGHT + 32, true);
 	
 	moves--;
+} else if (objPlayer.state == playerStateTeleporting) {
+	instance_activate_region(startx, starty, SCREEN_WIDTH + 32, SCREEN_HEIGHT + 32, true);
 }

@@ -13,8 +13,8 @@ global.soundVolume = 0.5;
 global.fullscreen = false;
 
 levels = [LevelTutorial, Level11, Level12, Level13];
-levelStart = [[23, 38], [2, 3], [14, 3], [5, 1]];
-levelTitle = ["Tutorial", "Level 1-1"];
+levelStart = [[23, 38], [23, 39], [34, 32], [22, 36]];
+levelTitle = ["Tutorial", "Level 1-1", "Level 1-2", "Level 1-3"];
 
 warningDelay = 90;
 warningCountdown = warningDelay + 15;

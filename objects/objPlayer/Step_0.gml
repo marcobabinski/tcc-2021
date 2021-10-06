@@ -11,13 +11,11 @@ if (gamepad_axis_value(0, gp_axislv) < -0.2) keyUp = true;
 
 if (global.status == "g") {
 	if (global.turn == "p") {
-		//if (not moving or not attacking) {
-			script_execute(state);
-		//}
+		script_execute(state);
 	}
 }
 
 // Atualizar sprite
 depth = -bbox_bottom;
 
-if (state != playerStateTeleporting and state != playerStateNextLevel) image_index = facing;
+if (state == playerStateFree or state == playerStateMoving or state == playerStateAttacking) image_index = facing;

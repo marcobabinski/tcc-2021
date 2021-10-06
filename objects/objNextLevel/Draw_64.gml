@@ -58,7 +58,7 @@ if (active) {
 }
 
 // Debug
-if (true) {
+if (false) {
 	draw_set_color(c_black);
 	draw_set_font(fonHeartbit2);
 	draw_text(2, 2, "resize: " +string(resize));
