@@ -16,26 +16,28 @@ if (menu == 0) {
 	if (ig_screen == 0) {
 		// Mudar pos
 		if (keyDown - keyUp != 0) {
-			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 3);
+			playMenuBeep();
+			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 2);
 		}
 		
 		// Ações
 		if (keyConfirm) {
 			switch (ig_pos) {
 			    case 0:
+					playMenuSelect();
 			        menu = -1;
 			        break;
 				case 1:
+					playMenuSelect();
 			        ig_screen = 1;
 					ig_pos = 0;
 			        break;
 				case 2:
-			        menu = -1;
-			        break;
-				case 3:
+					playMenuSelect();
 			        game_end();
 			        break;
 			    default:
+					playMenuSelect();
 			        menu = -1;
 			        break;
 			}
@@ -43,7 +45,7 @@ if (menu == 0) {
 		
 		// Botões tela inicial
 		draw_set_color(make_color_rgb(239, 125, 87));
-		for (var i = 0; i < 4; i++) {
+		for (var i = 0; i < 3; i++) {
 			if (ig_pos == i) {
 				draw_set_color(make_color_rgb(255, 205, 117));
 				draw_roundrect(105, 47 + 25 * i, 215, 50 + 25 * i + 23, false);
@@ -55,7 +57,7 @@ if (menu == 0) {
 	
 		draw_set_font(fonHeartbit2)
 		draw_set_color(c_white);
-		for (var i = 0; i < 4; i++) {
+		for (var i = 0; i < 3; i++) {
 			draw_text(SCREEN_WIDTH/2 - string_width(ig_mn_text[i])/2, 50 + 25 * i + 3, ig_mn_text[i]);
 		}
 		// Tela opções
@@ -68,6 +70,7 @@ if (menu == 0) {
 		
 		// Mudar pos
 		if (keyDown - keyUp != 0) {
+			playMenuBeep();
 			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 3);
 		}
 		
@@ -75,9 +78,11 @@ if (menu == 0) {
 		if (keyRight - keyLeft != 0) {
 			switch (ig_pos) {
 			    case 0:
+					playMenuBeep();
 			        global.musicVolume = clamp(global.musicVolume + ((keyRight - keyLeft) * 0.1), 0, 1);
 			        break;
 				case 1:
+					playMenuBeep();
 			        global.soundVolume = clamp(global.soundVolume + ((keyRight - keyLeft) * 0.1), 0, 1);
 			        break;
 			    default:
@@ -89,9 +94,11 @@ if (menu == 0) {
 		if (keyConfirm) {
 			switch (ig_pos) {
 			    case 2:
+					playMenuSelect();
 			        global.fullscreen = !global.fullscreen
 			        break;
 				case 3:
+					playMenuSelect();
 			        ig_screen = 0;
 					ig_pos = 1;
 			        break;
@@ -105,42 +112,42 @@ if (menu == 0) {
 		else currentSelected = 0;
 		
 		// Música
-		draw_sprite(sprMusic, 0, 110, 50 + 25);
-		draw_sprite(sprConfigAdjust, currentSelected, 130, 50 + 25);
+		draw_sprite(sprMusic, 0, 110, 50);
+		draw_sprite(sprConfigAdjust, currentSelected, 130, 50);
 		for (var i = 0; i < 10; i++) {
 			if (i * 0.1 < global.musicVolume) draw_set_color(c_white);
 			else draw_set_color(c_dkgrey);
-			draw_rectangle(140 + (6 * i), 50 + 23, 140 + (6 * i) + 3, 50 + 24 + 16, false)
+			draw_rectangle(140 + (6 * i), 25 + 23, 140 + (6 * i) + 3, 25 + 24 + 16, false)
 		}
-		draw_sprite_ext(sprConfigAdjust, currentSelected, 208, 50 + 25, -1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprConfigAdjust, currentSelected, 208, 50, -1, 1, 0, c_white, 1);
 		
 		if (ig_pos == 1) currentSelected = 1;
 		else currentSelected = 0;
 		
 		// Sons
-		draw_sprite(sprSound, 0, 110, 80 + 25);
-		draw_sprite(sprConfigAdjust, currentSelected, 130, 80 + 25);
+		draw_sprite(sprSound, 0, 110, 80);
+		draw_sprite(sprConfigAdjust, currentSelected, 130, 80);
 		for (var i = 0; i < 10; i++) {
 			if (i * 0.1 < global.soundVolume) draw_set_color(c_white);
 			else draw_set_color(c_dkgrey);
-			draw_rectangle(140 + (6 * i), 80 + 23, 140 + (6 * i) + 3, 80 + 24 + 16, false)
+			draw_rectangle(140 + (6 * i), 55 + 23, 140 + (6 * i) + 3, 55 + 24 + 16, false)
 		}
-		draw_sprite_ext(sprConfigAdjust, currentSelected, 208, 80 + 25, -1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprConfigAdjust, currentSelected, 208, 80, -1, 1, 0, c_white, 1);
 		
 		// Fullscreen
 		if (ig_pos == 2) draw_set_color(make_color_rgb(239, 125, 87))
 		else draw_set_color(c_white);
 		
-		draw_sprite(sprCheckbox, global.fullscreen, 130, 125);
-		draw_text(156, 127, "Tela Cheia");
+		draw_sprite(sprCheckbox, global.fullscreen, 130, 100);
+		draw_text(150, 102, "Tela Cheia");
 		
 		// Voltar
 		if (ig_pos == 3) draw_set_color(make_color_rgb(255, 205, 117));
 		else draw_set_color(make_color_rgb(239, 125, 87));
 
-		draw_roundrect(110, 125 + 25, 210, 125 + 25 + 20, false);
+		draw_roundrect(110, 125, 210, 125 + 20, false);
 		draw_set_color(c_white);
-		draw_text(SCREEN_WIDTH/2 - string_width("Voltar")/2, 153, "Voltar");
+		draw_text(SCREEN_WIDTH/2 - string_width("Voltar")/2, 128, "Voltar");
 		
 	}
 }

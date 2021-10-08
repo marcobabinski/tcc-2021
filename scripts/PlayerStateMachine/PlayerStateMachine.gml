@@ -192,6 +192,8 @@ function playerStateNextLevel() {
 function playerStateDeath() {
 	sprite_index = sprPlayerDead;
 	
+	if (image_index == 15) playDeath();
+	
 	if (image_index == sprite_get_number(sprPlayerDead) - 1) {
 		image_speed = 0;
 		objPlayerDeath.stage = 2;

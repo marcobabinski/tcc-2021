@@ -58,3 +58,6 @@ if (not alreadyOpened and focusOnOpen and opened) {
 
 // Já foi aberta?
 if (opened) alreadyOpened = true;
+
+if (not opened) depth = -bbox_bottom;
+else depth = -bbox_top;

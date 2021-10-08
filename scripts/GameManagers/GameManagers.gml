@@ -62,6 +62,7 @@ function passTurn() {
 }
 
 function passLevel() {
+	objPlayer.facing = 3;
 	global.level++;
 	global.checkpoint = -1;
 	
@@ -165,6 +166,16 @@ function writeTextVertWave(_text, _x, _y) {
 	
 	for(var i = 1; i <= _len; i++) {
 		draw_text(_x + _wid, _y + sin((timer/10) + i), string_char_at(_text, i));
+		_wid += string_width(string_char_at(_text, i));
+	}
+}
+
+function writeTextFullWave(_text, _x, _y) {
+	var _len = string_length(_text);
+	var _wid = 0;
+	
+	for(var i = 1; i <= _len; i++) {
+		draw_text(_x + _wid + cos((timer/10) + i), _y + sin((timer/10) + i), string_char_at(_text, i));
 		_wid += string_width(string_char_at(_text, i));
 	}
 }

@@ -7,7 +7,7 @@ menu = -1;
 ig_pos = 0;
 ig_screen = 0;
 
-ig_mn_text = ["Voltar ao jogo", "Ajustes", "Menu principal", "Sair do jogo"];
+ig_mn_text = ["Voltar ao jogo", "Ajustes", "Sair do jogo"];
 
 // main-screen
 ms_pos = 0;

@@ -10,7 +10,7 @@ if (global.turn == "o" and moves > 0) {
 
 
 
-if (layer_exists(layer_get_id("Particles"))) {
+if (not cullRange(self) and layer_exists(layer_get_id("Particles"))) {
 	if (random_range(0, 100) > 90) {
 		instance_create_layer(random_range(x, x + 15), random_range(y + 8, y + 4), "Particles", objPortalParticle);
 	}

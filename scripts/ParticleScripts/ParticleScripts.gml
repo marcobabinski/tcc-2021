@@ -20,6 +20,7 @@ function particleMoveSmoke() {
 }
 
 function jarDestroy() {
+	playVaseBreak();
 	instance_destroy(self);
 	for (var i = 0; i < irandom_range(1, 3); i++) {
 		instance_create_layer(x, y, "Particles", objJarFrag);
