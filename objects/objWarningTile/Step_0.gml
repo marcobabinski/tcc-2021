@@ -18,12 +18,22 @@ if (abs(getPosTile(self)[1] - getPosTile(objPlayer)[1]) > 1) instance_destroy(se
 
 if (objPlayerDeath.active or objNextLevel.active) instance_destroy(self);
 
+// Tiles indevidos
+if (tileAt(getPosTile(self)[0], getPosTile(self)[1]) != FLOOR) instance_destroy(self);
+
 // Tirar de cima de inimigos
 with (all) {
 	// Inimigos
 	if (depth == layer_get_depth(layer_get_id("Enemies"))) {
 		if(getPosTile(self)[0] == getPosTile(other)[0]
 		and getPosTile(self)[1] == getPosTile(other)[1]) instance_destroy(other);
+	} else if (depth == layer_get_depth(layer_get_id("Terrain"))) { // Terrenos
+		if (object_index == objJar
+		 or object_index == objWall
+		 or object_index == objGoal) {
+			if(getPosTile(self)[0] == getPosTile(other)[0]
+			and getPosTile(self)[1] == getPosTile(other)[1]) instance_destroy(other);
+		 }
 	}
 }
 
