@@ -21,5 +21,8 @@ or objPlayer.state == playerStateDeath) {
 	image_alpha = max(0, image_alpha - 0.1);
 } else image_alpha = min(1, image_alpha + 0.1);
 
+// Tem a espada?
+if (not global.sword) image_alpha = 0;
+
 // Aplicar
 draw_self();

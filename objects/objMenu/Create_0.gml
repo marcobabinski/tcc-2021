@@ -6,8 +6,11 @@ menu = -1;
 // in-game
 ig_pos = 0;
 ig_screen = 0;
+ig_pass = [0, 0, 0];
+ig_alt_pos = 0;
+ig_sub = -1;
 
-ig_mn_text = ["Voltar ao jogo", "Ajustes", "Sair do jogo"];
+ig_mn_text = ["Voltar ao jogo", "Ajustes", "Senhas", "Sair do jogo"];
 
 // main-screen
 ms_pos = 0;

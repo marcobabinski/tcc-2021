@@ -166,6 +166,7 @@ function movingStretch() {
 
 function playerDeath() {
 	playerDeathEvent(270);
+	global.levelScore = 0;
 }
 
 function playerStateNextLevel() {

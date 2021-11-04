@@ -86,3 +86,19 @@ function playDeath() {
 	audio_sound_gain(_sound, _volume, 0);
 	audio_play_sound(_sound, 10, false);
 }
+
+function playNextLevelMusic() {
+	var _volume = global.soundVolume;
+	var _sound = sndNextLevel;
+	
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}
+
+function playDeathMusic() {
+	var _volume = global.soundVolume;
+	var _sound = sndDeathMsc;
+	
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}

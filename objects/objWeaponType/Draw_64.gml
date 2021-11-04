@@ -1,0 +1,1 @@
+draw_sprite(sprWeaponType, global.sword, 4, SCREEN_HEIGHT - 26);

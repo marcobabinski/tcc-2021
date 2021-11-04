@@ -17,7 +17,7 @@ if (menu == 0) {
 		// Mudar pos
 		if (keyDown - keyUp != 0) {
 			playMenuBeep();
-			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 2);
+			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 3);
 		}
 		
 		// Ações
@@ -34,7 +34,14 @@ if (menu == 0) {
 			        break;
 				case 2:
 					playMenuSelect();
-			        game_end();
+			        ig_screen = 2;
+					ig_pos = 0;
+			        break;
+				case 3:
+					// You really want to quit
+					playMenuSelect();
+			        ig_screen = 3;
+					ig_pos = 0;
 			        break;
 			    default:
 					playMenuSelect();
@@ -45,7 +52,7 @@ if (menu == 0) {
 		
 		// Botões tela inicial
 		draw_set_color(make_color_rgb(239, 125, 87));
-		for (var i = 0; i < 3; i++) {
+		for (var i = 0; i < 4; i++) {
 			if (ig_pos == i) {
 				draw_set_color(make_color_rgb(255, 205, 117));
 				draw_roundrect(105, 47 + 25 * i, 215, 50 + 25 * i + 23, false);
@@ -57,11 +64,13 @@ if (menu == 0) {
 	
 		draw_set_font(fonHeartbit2)
 		draw_set_color(c_white);
-		for (var i = 0; i < 3; i++) {
+		for (var i = 0; i < 4; i++) {
 			draw_text(SCREEN_WIDTH/2 - string_width(ig_mn_text[i])/2, 50 + 25 * i + 3, ig_mn_text[i]);
 		}
 		// Tela opções
 	} else if (ig_screen == 1) {
+		draw_set_font(fonHeartbit2)
+		
 		// Voltar
 		if (keyCancel) {
 			ig_screen = 0;
@@ -149,5 +158,187 @@ if (menu == 0) {
 		draw_set_color(c_white);
 		draw_text(SCREEN_WIDTH/2 - string_width("Voltar")/2, 128, "Voltar");
 		
+	} else if (ig_screen = 2) {
+		// Voltar
+		if (keyCancel and ig_sub < 0) {
+			ig_screen = 0;
+			ig_pos = 2;
+		}
+		
+		// Mudar pos
+		if (keyDown - keyUp != 0 and ig_sub < 0) {
+			playMenuBeep();
+			ig_pos = clamp(ig_pos + keyDown - keyUp, 0, 2);
+		}
+		
+		// Botões tela inicial
+		draw_set_color(make_color_rgb(239, 125, 87));
+		for (var i = 1; i < 3; i++) {
+			if (ig_pos == i) {
+				draw_set_color(make_color_rgb(255, 205, 117));
+				draw_roundrect(105, 47 + 25 * i, 215, 50 + 25 * i + 23, false);
+			} else {
+				draw_set_color(make_color_rgb(239, 125, 87));
+				draw_roundrect(110, 50 + 25 * i, 210, 50 + 25 * i + 20, false);
+			}
+		}
+	
+		// Texto
+		draw_set_font(fonHeartbit2)
+		draw_set_color(c_white);
+		_text = ["", "Confirmar senha", "Voltar"];
+		for (var i = 1; i < 3; i++) {
+			draw_text(SCREEN_WIDTH/2 - string_width(_text[i])/2, 50 + 25 * i + 3, _text[i]);
+		}
+		
+		// Selecionar
+		if (ig_pos == 0  and ig_sub < 0) {
+			draw_set_color(make_color_rgb(255, 205, 117));
+			draw_rectangle(123, 40, 133 + 60 + 5, 45 + 16 + 5, false);
+		}
+		
+		// Ícones
+		for(var i = 0; i < 3; i++) {
+			draw_sprite(sprPassword, ig_pass[i], 133 + 20*i, 45);
+		}
+		
+		// Ícones dessa fase
+		_text = "- Senha desta fase -";
+		_width = string_width(_text);
+		draw_set_color(c_white);
+		draw_text(SCREEN_WIDTH/2 - _width/2, 125, _text);
+		for(var i = 0; i < 3; i++) {
+			draw_sprite(sprPassword, objGame.levelPass[global.level][i], 133 + 20*i, 140);
+		}
+		
+		// Ativos
+		if (keyConfirm and ig_sub < 0) {
+			switch (ig_pos) {
+			    case 0:
+					// Entrar em modo pass
+					playMenuSelect();
+					ig_sub = 0;
+			        break;
+				case 1:
+					// Aplicar pass
+					var _passed = false;
+					var _level = -1;
+					for (var i = 0; i < array_length(objGame.levelPass); i++) {
+						_passed = true;
+						if (ig_pass[0] != objGame.levelPass[i][0]) _passed = false;
+						if (ig_pass[1] != objGame.levelPass[i][1]) _passed = false;
+						if (ig_pass[2] != objGame.levelPass[i][2]) _passed = false;
+						
+						if (_passed) _level = i
+					}
+					
+					if (_level > -1) {
+						playNextLevelMusic();
+						global.level = _level;
+						if (_level != 0) global.sword = true;
+						menu = -1;
+					} else {
+						playDeathMusic();
+					}
+			        break;
+				case 2:
+					// Voltar
+					playMenuSelect();
+					ig_screen = 0;
+					ig_pos = 2;
+			    default:
+			        break;
+			}
+		}
+		
+		// Sessão de alteração
+		if (ig_sub > -1) {
+			// Sair
+			if (keyCancel) {
+				ig_sub = -1;
+				ig_pos = 0;
+			}
+			
+			// Trocar pro lado
+			if (keyRight - keyLeft != 0) {
+				playMenuBeep();
+				ig_alt_pos = clamp(ig_alt_pos + keyRight - keyLeft, 0, 2);
+			}
+			
+			// Trocar pra cima
+			if (keyDown - keyUp != 0) {
+				playMenuBeep();
+				ig_pass[ig_alt_pos] = clamp(ig_pass[ig_alt_pos] + keyUp - keyDown, 0, 5);
+			}
+			
+			// Marcar selecionado
+			draw_set_color(make_color_rgb(255, 205, 117));
+			draw_rectangle(133 + 20*ig_alt_pos, 45, 133 + 20*ig_alt_pos + 16, 45 + 16, true);
+			
+			// triangulos
+			if (ig_pass[ig_alt_pos] < 5) draw_triangle(133 + 20*ig_alt_pos, 40, 133 + 20*ig_alt_pos + 16, 40, 133 + 20*ig_alt_pos + 8, 35, false);
+			if (ig_pass[ig_alt_pos] > 0) draw_triangle(133 + 20*ig_alt_pos, 40 + 24, 133 + 20*ig_alt_pos + 16, 40 + 24, 133 + 20*ig_alt_pos + 8, 45 + 24, false);
+		}
+	} else if (ig_screen == 3) {
+		// Texto
+		_qText = "Tem certeza que deseja sair?";
+		draw_set_color(c_white);
+		draw_set_font(fonHeartbit2);
+		draw_text(SCREEN_WIDTH/2 - string_width(_qText)/2, 50, _qText);
+		
+		// Botões
+		if (ig_pos == 0) draw_set_color(make_color_rgb(255, 205, 117)); else draw_set_color(make_color_rgb(239, 125, 87));
+		draw_roundrect(SCREEN_WIDTH/2 - 50, 70, SCREEN_WIDTH/2 - 5, 70 + 26, false);
+		if (ig_pos == 1) draw_set_color(make_color_rgb(255, 205, 117)); else draw_set_color(make_color_rgb(239, 125, 87));
+		draw_roundrect(SCREEN_WIDTH/2 + 50, 70, SCREEN_WIDTH/2 + 5, 70 + 26, false);
+		
+		draw_set_color(c_white);
+		draw_set_font(fonHeartbit2);
+		draw_text(SCREEN_WIDTH/2 - 34, 76, "Nao");
+		draw_text(SCREEN_WIDTH/2 + 21, 76, "Sim");
+		
+		// Não perca o progresso!
+		// Ícones dessa fase
+		_text = "Guarde seu progresso!!!";
+		_width = string_width(_text);
+		draw_set_color(c_white);
+		draw_text(SCREEN_WIDTH/2 - _width/2, 105, _text);
+		
+		_text = "Anote este codigo para voltar depois!";
+		_width = string_width(_text);
+		draw_set_color(c_white);
+		draw_text(SCREEN_WIDTH/2 - _width/2, 115, _text);
+		for(var i = 0; i < 3; i++) {
+			draw_sprite(sprPassword, objGame.levelPass[global.level][i], 133 + 20*i, 140);
+		}
+		
+		// Sair
+		if (keyCancel) {
+			ig_screen = 0;
+			ig_pos = 3;
+		}
+		
+		// Alternar
+		if (keyRight - keyLeft != 0) {
+			playMenuBeep();
+			ig_pos = clamp(ig_pos + keyRight - keyLeft, 0, 1);
+		}
+		
+		// Ativos
+		if (keyConfirm) {
+			switch (ig_pos) {
+			    case 0:
+					playMenuSelect();
+			        ig_screen = 0;
+					ig_pos = 3;
+			        break;
+				case 1:
+					playMenuSelect();
+			        game_end();
+			        break;
+			    default:
+			        break;
+			}
+		}
 	}
 }

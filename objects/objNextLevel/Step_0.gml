@@ -1,7 +1,7 @@
 // Startar animação
 if (not active and duration > 0) {
 	// Setar configs
-	audio_play_sound(sndNextLevel, 10, false);
+	playNextLevelMusic();
 	active = true;
 	resize = 10;
 	portalDelay = 120;

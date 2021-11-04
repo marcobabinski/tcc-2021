@@ -101,3 +101,8 @@ for (var i = 0; i < array_length(poList); i++) {
 		global.collisionField[getPosTile(self)[0]][getPosTile(self)[1]] = PLAYERONLY;
 	}
 }
+
+// Lockar na ultima fase
+if (global.level == 10) {
+	global.turn = "endgame";
+}

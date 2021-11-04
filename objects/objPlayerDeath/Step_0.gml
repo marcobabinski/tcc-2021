@@ -1,7 +1,7 @@
 // Startar animação
 if (not active and duration > 0) {
 	// Setar configs
-	audio_play_sound(sndDeathMsc, 10, false);
+	playDeathMusic();
 	active = true;
 	darkBg = 0;
 	progressY = -SCREEN_HEIGHT;

@@ -8,7 +8,7 @@ if (active) {
 	draw_rectangle(0, 90 - levelH, 320, 90 + levelH, false);
 	
 	// Mover texto
-	levelX += ((SCREEN_WIDTH/2 - string_width(levelTitle)) - levelX)/30;
+	levelX += ((SCREEN_WIDTH/2 - string_width(levelTitle)/2) - levelX)/30;
 	
 	// Desenhar texto
 	draw_set_font(fonFutilePro);

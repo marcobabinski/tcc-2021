@@ -3,6 +3,7 @@ if (global.turn == "o" and moves > 0) {
 	if (getPosTile(self)[0] == getPosTile(objPlayer)[0]
 		and getPosTile(self)[1] == getPosTile(objPlayer)[1]) {
 		nextLevelEvent(300);
+		applyPoints();
 	}
 	
 	moves--;

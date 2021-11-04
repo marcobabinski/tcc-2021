@@ -1,0 +1,1 @@
+addPoints(1000, objPlayer.x, objPlayer.y);
