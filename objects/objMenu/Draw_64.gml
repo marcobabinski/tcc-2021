@@ -235,6 +235,10 @@ if (menu == 0) {
 					if (_level > -1) {
 						playNextLevelMusic();
 						global.level = _level;
+						global.score = 0;
+						global.levelScore = 0;
+						global.pointStreak = 0;
+						global.checkpoint = -1;
 						if (_level != 0) global.sword = true;
 						menu = -1;
 					} else {

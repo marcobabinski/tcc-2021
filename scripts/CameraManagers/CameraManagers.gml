@@ -33,3 +33,7 @@ function nextLevelEvent(_duration) {
 function playerDeathEvent(_duration) {
 	objPlayerDeath.duration = _duration;
 }
+
+function playerGetSwordEvent(_duration) {
+	objGetSword.duration = _duration;
+}

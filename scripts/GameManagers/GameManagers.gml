@@ -181,7 +181,7 @@ function writeTextFullWave(_text, _x, _y) {
 }
 
 function checkCutscene() {
-	var _list = [objLevelTitle, objLevelRestart];
+	var _list = [objLevelTitle, objLevelRestart, objGetSword, objSplashScreen];
 	var _cutscene = false;
 	
 	for (var i = 0; i < array_length(_list); i++) {

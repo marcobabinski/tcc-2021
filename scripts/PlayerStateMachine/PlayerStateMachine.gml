@@ -167,6 +167,8 @@ function movingStretch() {
 function playerDeath() {
 	playerDeathEvent(270);
 	global.levelScore = 0;
+	global.pointStreak = 0;
+	global.score = max(0, global.score - 500);
 }
 
 function playerStateNextLevel() {

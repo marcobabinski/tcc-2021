@@ -21,4 +21,6 @@ writeTextFullWave("PARABENS! VOCE TERMINOU AS FASES!", 1*16, 2*16);
 draw_set_font(fonHeartbit2);
 writeTextVertWave("- Marco Andre Babinski -", 6 * 16, 3 * 16);
 
+draw_text(SCREEN_WIDTH/2 - string_width(scoreFinal)/2, 4 * 16, scoreFinal);
+
 draw_text(6.2 * 16, 145, "Pressione ESC para sair");

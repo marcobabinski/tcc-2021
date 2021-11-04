@@ -18,6 +18,9 @@ global.musicVolume = 0.5;
 global.soundVolume = 0.5;
 global.fullscreen = false;
 
+// Intro
+global.intro = 1;
+
 levels = [LevelTutorial, Level11, Level12, Level13, Level21, Level22, Level23, Level31, Level32, Level33, RoomComplete];
 levelStart = [[23, 38], [23, 39], [34, 32], [22,36], [22,36], [22,36], [22,36], [22,36], [28,10], [22,36], [0, 0]];
 levelTitle = ["Tutorial",
@@ -28,7 +31,8 @@ levelTitle = ["Tutorial",
 levelLabel = ["0-0",
 			  "1-1", "1-2", "1-3",
 			  "2-1", "2-2", "2-3",
-			  "3-1", "3-2", "3-3",]
+			  "3-1", "3-2", "3-3",
+			  "CABO!"]
 			  
 levelPass = [[0,0,0],
 			 [1,0,2], [2,1,0], [1,2,4],

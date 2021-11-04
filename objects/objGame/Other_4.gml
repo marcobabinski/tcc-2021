@@ -106,3 +106,9 @@ for (var i = 0; i < array_length(poList); i++) {
 if (global.level == 10) {
 	global.turn = "endgame";
 }
+
+// Intro Management
+if (global.intro > 0 and global.level == 0 and room == LevelTutorial) {
+	instance_create_layer(0, 0, "Cutscene", objSplashScreen);
+	global.intro--;
+}

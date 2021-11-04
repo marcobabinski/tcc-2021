@@ -102,3 +102,36 @@ function playDeathMusic() {
 	audio_sound_gain(_sound, _volume, 0);
 	audio_play_sound(_sound, 10, false);
 }
+
+function playCollectCoin() {
+	var _volume = 0.5 * global.soundVolume;
+	var _sound = sndCoin;
+	
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}
+
+function playCollectRupee() {
+	var _volume = 0.5 * global.soundVolume;
+	var _sound = sndRupee;
+	
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}
+
+function playCollectDiamond() {
+	var _volume = 0.5 * global.soundVolume;
+	var _sound = sndDiamond;
+	
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}
+
+function playCombo() {
+	var _volume = 0.5 * global.soundVolume;
+	var _sound = sndCombo2;
+	
+	audio_sound_pitch(_sound, 0.8 + (0.2 * global.pointStreak));
+	audio_sound_gain(_sound, _volume, 0);
+	audio_play_sound(_sound, 10, false);
+}
